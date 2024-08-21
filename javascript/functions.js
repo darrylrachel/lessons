@@ -137,3 +137,89 @@ Index Adjustment: The input number is adjusted by subtracting 1 to match the zer
 Returns the corresponding day: If the input is valid, the function returns the day of the week from the array.
 This function works as expected, returning the correct day for valid inputs and null for invalid ones.
 */
+
+
+/*//////////////////////////////////////////////////////////////
+                              FUNCTIONS 102
+
+Function Scope
+Block Scope
+Lexical Scope
+Function Expressions
+Returning Functions *
+Keyword "this" *
+Adding Methods To Objects                              
+//////////////////////////////////////////////////////////////*/
+
+// SCOPE
+// Variable visibility - The location where a variable is defined dictates where we have access to that variable
+//////////////////
+
+const creature = "Sea Dragon";
+
+function scubaDive() {
+  const creature = "Dancer";
+  console.log(creature);
+}
+scubaDive();
+
+// HIGHER ORDER FUNCTIONS
+// Functions that operate on/with other functions
+// They can:
+//    * Accept other functions as arguments
+//    * Return a function
+////////////////////////////////////////
+function callTwice(func) {
+  func();
+  func();
+}
+
+function rollDie() {
+  const roll = Math.floor(Math.random() * 6) + 1;
+  console.log(roll);
+}
+
+callTwice(rollDie); 
+// Do not pass rollDie like rollDice(), you want to pass in the value of rollDie into callTwice
+// and not execute rollDie inside of callTwice
+
+function callTenTimes(f) {
+  for( let i = 0; i < 10; i++) {
+    f()
+  }
+}
+console.log(rollDie); // Will print rollDie value 10 times
+
+// RETURN A FUNCTION
+
+function makeMysteryFunc() {
+  const rand = Math.random();
+  if (rand > 0.5) {
+    return function() {
+      console.log('CONGRATS, I AM A GOOD FUNCTION!');
+    }
+  } else {
+    return function() {
+      alert('You\'ve been affected by a computer virus!' );
+    }
+  }
+}
+
+// Make a function that tells if a number is between 50 & 100
+function isBetween(num) {
+  return num >= 50 && num <= 100;
+}
+
+// Make a function that tells if a number is between 1 & 10
+function isBetween(num) {
+  return num >= 1 && num <= 10;
+}
+
+// FACTORY FUNCTION
+
+function makeBetweenFunc(min, max) {
+  return function(num) {
+    return num >= min && num <= max;
+  }
+}
+makeBetweenFunc(100, 200) // 
